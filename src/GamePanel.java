@@ -110,8 +110,23 @@ public class GamePanel extends JPanel {
     public void ballReset(){
         ballX = PANEL_WIDTH / 2 - BALL_SIZE / 2;
         ballY = PANEL_HEIGHT / 2 - BALL_SIZE / 2;
-        ballXSpeed = BALL_SPEED;
-        ballYSpeed = BALL_SPEED;
+        Random random = new Random();
+        int i = random.nextInt(5);
+        if(i == 1){
+            ballXSpeed = BALL_SPEED;
+            ballYSpeed = BALL_SPEED;
+        } else if (i == 2) {
+            ballXSpeed = -BALL_SPEED;
+            ballYSpeed = BALL_SPEED;
+        } else if (i == 3) {
+            ballXSpeed = BALL_SPEED;
+            ballYSpeed = -BALL_SPEED;
+        } else if(i == 4){
+            ballXSpeed = -BALL_SPEED;
+            ballYSpeed = -BALL_SPEED;
+        }
+
+
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
