@@ -22,8 +22,8 @@ public class GamePanel extends JPanel {
     private int paddle2Y = PANEL_HEIGHT / 2 - PADDLE_HEIGHT / 2;
     private int ballX = PANEL_WIDTH / 2 - BALL_SIZE / 2;
     private int ballY = PANEL_HEIGHT / 2 - BALL_SIZE / 2;
-    private double ballXSpeed = BALL_SPEED;
-    private double ballYSpeed = BALL_SPEED;
+    private int ballXSpeed = BALL_SPEED;
+    private int ballYSpeed = BALL_SPEED;
     private boolean up1Pressed = false;
     private boolean down1Pressed = false;
     private boolean up2Pressed = false;
@@ -146,5 +146,8 @@ public class GamePanel extends JPanel {
         g.fillRect(0, paddle1Y, PADDLE_WIDTH,PADDLE_HEIGHT);
         g.fillRect(PANEL_WIDTH - PADDLE_WIDTH, paddle2Y, PADDLE_WIDTH,PADDLE_HEIGHT);
         g.fillRect(ballX,ballY,BALL_SIZE,BALL_SIZE);
+        g.setColor(Color.GREEN);
+        g.setFont(new Font("Arial",Font.BOLD,12));
+        g.drawString("Ball Speed: " + Math.abs(ballXSpeed),PANEL_WIDTH / 2 - 30,PANEL_HEIGHT - 10);
     }
 }
