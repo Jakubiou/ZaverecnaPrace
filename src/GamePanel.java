@@ -26,12 +26,14 @@ public class GamePanel extends JPanel {
     private boolean down1Pressed = false;
     private boolean up2Pressed = false;
     private boolean down2Pressed = false;
+    private ScorePanel scorePanel;
 
-    public GamePanel(){
+    public GamePanel(ScorePanel scorePanel){
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         setBackground(Color.BLACK);
         setFocusable(true);
         requestFocusInWindow();
+        this.scorePanel = scorePanel;
 
         Timer timer = new Timer(10, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -106,8 +108,10 @@ public class GamePanel extends JPanel {
             ballYSpeed = Math.max(ballYSpeed - 1, -MAX_BALL_SPEED);
         }
         if(ballX < 0){
+            scorePanel.incrementPlayer2Score();
             ballReset();
         } else if (ballX > PANEL_WIDTH - BALL_SIZE) {
+            scorePanel.incrementPlayer1Score();
             ballReset();
         }
 
