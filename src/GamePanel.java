@@ -14,6 +14,8 @@ public class GamePanel extends JPanel {
     private int PADDLE_SPEED = 7;
     private int BALL_SIZE = 20;
     private int BALL_SPEED = 3;
+
+    private int MAX_BALL_SPEED = 10;
     private int paddle1Y = PANEL_HEIGHT / 2 - PADDLE_HEIGHT / 2;
     private int paddle2Y = PANEL_HEIGHT / 2 - PADDLE_HEIGHT / 2;
     private int ballX = PANEL_WIDTH / 2 - BALL_SIZE / 2;
@@ -95,13 +97,13 @@ public class GamePanel extends JPanel {
         }
         if(ballX <= PADDLE_WIDTH && ballY + BALL_SIZE >= paddle1Y && ballY <= paddle1Y + PADDLE_HEIGHT){
             ballXSpeed *= -1;
-            ballXSpeed *= 1.2;
-            ballYSpeed *= 1.2;
+            ballXSpeed = Math.min(ballXSpeed + 1, MAX_BALL_SPEED);
+            ballYSpeed = Math.min(ballYSpeed + 1, MAX_BALL_SPEED);
         }
         if(ballX >= PANEL_WIDTH - PADDLE_WIDTH - BALL_SIZE && ballY + BALL_SIZE >= paddle2Y && ballY <= paddle2Y + PADDLE_HEIGHT){
             ballXSpeed *= -1;
-            ballXSpeed *= 1.2;
-            ballYSpeed *= 1.2;
+            ballXSpeed = Math.max(ballXSpeed - 1, -MAX_BALL_SPEED);
+            ballYSpeed = Math.max(ballYSpeed - 1, -MAX_BALL_SPEED);
         }
         if(ballX < 0){
             ballReset();
