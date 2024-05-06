@@ -12,6 +12,7 @@ public class StartPong {
         GamePanel gamePanel = new GamePanel(scorePanel);
         frame.getContentPane().setLayout(new BorderLayout());
         frame.getContentPane().add(gamePanel, BorderLayout.CENTER);
+        frame.getContentPane().add(scorePanel,BorderLayout.NORTH);
 
         frame.pack();
         frame.setVisible(true);

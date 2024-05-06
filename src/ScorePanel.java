@@ -31,7 +31,7 @@ public class ScorePanel extends JPanel {
 
         g.setColor(TEXT_COLOR);
         g.setFont(font);
-        g.drawString("Score" + player1Score,30,30);
-        g.drawString("Score" + player2Score, PANEL_WIDTH - 200, 30);
+        g.drawString("Score: " + player1Score,30,30);
+        g.drawString("Score: " + player2Score, PANEL_WIDTH - 200, 30);
     }
 }
