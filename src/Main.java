@@ -1,3 +1,5 @@
+import Pong.StartPong;
+
 public class Main {
     public static void main(String[] args) {
         StartPong sp = new StartPong();

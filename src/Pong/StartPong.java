@@ -1,3 +1,8 @@
+package Pong;
+
+import Pong.GamePanel;
+import Pong.ScorePanel;
+
 import javax.swing.*;
 import java.awt.*;
 
