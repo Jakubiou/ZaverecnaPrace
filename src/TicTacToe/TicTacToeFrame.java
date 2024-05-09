@@ -1,4 +1,7 @@
 package TicTacToe;
 
-public class TicTacToeFrame {
+import javax.swing.*;
+
+public class TicTacToeFrame extends JFrame {
+    public TicTacToeBoard board;
 }
