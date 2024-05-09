@@ -15,6 +15,7 @@ public class TicTacToeBoard extends JPanel {
         setPreferredSize(new Dimension(300,300));
         buttons = new JButton[3][3];
         currentPlayer = 'X';
+        initializeBoard();
     }
     public void initializeBoard(){
         for(int i = 0; i < 3; i++){
