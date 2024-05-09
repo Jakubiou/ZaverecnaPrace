@@ -44,6 +44,8 @@ public class TicTacToeBoard extends JPanel {
                         }
                     }
                 });
+                buttons[i][j] = button;
+                add(button);
             }
         }
     }
