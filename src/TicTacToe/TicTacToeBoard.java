@@ -26,6 +26,22 @@ public class TicTacToeBoard extends JPanel {
                     public void actionPerformed(ActionEvent e) {
                         int row = -1;
                         int col = -1;
+                        for(int i  = 0; i < 3; i++){
+                            for(int j = 0; j < 3; j++){
+                                if(buttons[i][j] == button){
+                                    row = i;
+                                    col = j;
+                                    break;
+                                }
+                            }
+                        }
+                        if(row == -1 || col == -1){
+                            return;
+                        }
+                        if(buttons[row][col].getText().isEmpty()){
+                            buttons[row][col].setText(Character.toString(currentPlayer));
+                            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+                        }
                     }
                 });
             }
