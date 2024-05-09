@@ -9,6 +9,8 @@ public class TicTacToeBoard extends JPanel {
     private JButton[][] buttons;
     private char currentPlayer;
 
+    private boolean gameEnded;
+
     public TicTacToeBoard(){
         setLayout(new GridLayout(3,3,10,10));
         setBackground(Color.WHITE);
@@ -47,6 +49,13 @@ public class TicTacToeBoard extends JPanel {
                 });
                 buttons[i][j] = button;
                 add(button);
+            }
+        }
+    }
+    public void checkWinner(){
+        for(int i = 0; i < 3; i++){
+            if (buttons[i][0].getText().equals(buttons[i][1].getText()) && buttons[i][0].getText().equals(buttons[i][2].getText()) && !buttons[i][0].getText().isEmpty()) {
+                gameEnded = true;
             }
         }
     }
