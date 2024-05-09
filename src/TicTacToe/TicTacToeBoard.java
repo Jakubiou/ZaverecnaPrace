@@ -58,5 +58,10 @@ public class TicTacToeBoard extends JPanel {
                 gameEnded = true;
             }
         }
+        for(int i = 0; i < 3; i++) {
+            if (buttons[0][i].getText().equals(buttons[1][i].getText()) && buttons[0][i].getText().equals(buttons[2][i].getText()) && !buttons[0][i].getText().isEmpty()) {
+                gameEnded = true;
+            }
+        }
     }
 }
