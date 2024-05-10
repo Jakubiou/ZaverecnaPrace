@@ -44,6 +44,7 @@ public class TicTacToeBoard extends JPanel {
                         if(buttons[row][col].getText().isEmpty()){
                             buttons[row][col].setText(Character.toString(currentPlayer));
                             currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+                            checkWinner();
                         }
                     }
                 });
@@ -62,6 +63,12 @@ public class TicTacToeBoard extends JPanel {
             if (buttons[0][i].getText().equals(buttons[1][i].getText()) && buttons[0][i].getText().equals(buttons[2][i].getText()) && !buttons[0][i].getText().isEmpty()) {
                 gameEnded = true;
             }
+        }
+        if (buttons[0][0].getText().equals(buttons[1][1].getText()) && buttons[0][0].getText().equals(buttons[2][2].getText()) && !buttons[0][0].getText().isEmpty()) {
+            gameEnded = true;
+        }
+        if (buttons[0][2].getText().equals(buttons[1][1].getText()) && buttons[0][2].getText().equals(buttons[2][0].getText()) && !buttons[0][2].getText().isEmpty()) {
+            gameEnded = true;
         }
     }
 }
