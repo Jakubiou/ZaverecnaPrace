@@ -42,11 +42,12 @@ public class TicTacToeBoard extends JPanel {
                         if(row == -1 || col == -1){
                             return;
                         }
-                        if(buttons[row][col].getText().isEmpty()){
+                        if(!gameEnded && buttons[row][col].getText().isEmpty()){
                             buttons[row][col].setText(Character.toString(currentPlayer));
+                            buttons[row][col].setHorizontalAlignment(SwingConstants.CENTER);
                             buttons[row][col].setVerticalAlignment(SwingConstants.CENTER);
-                            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
                             checkWinner();
+                            switchPlayer();
                         }
                     }
                 });
@@ -55,14 +56,14 @@ public class TicTacToeBoard extends JPanel {
             }
         }
     }
-    public void checkWinner(){
-        for(int i = 0; i < 3; i++){
+    public void checkWinner() {
+        for (int i = 0; i < 3; i++) {
             if (buttons[i][0].getText().equals(buttons[i][1].getText()) && buttons[i][0].getText().equals(buttons[i][2].getText()) && !buttons[i][0].getText().isEmpty()) {
                 gameEnded = true;
                 gameEndListener.onGameEnd(currentPlayer);
             }
         }
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             if (buttons[0][i].getText().equals(buttons[1][i].getText()) && buttons[0][i].getText().equals(buttons[2][i].getText()) && !buttons[0][i].getText().isEmpty()) {
                 gameEnded = true;
                 gameEndListener.onGameEnd(currentPlayer);
@@ -76,20 +77,23 @@ public class TicTacToeBoard extends JPanel {
             gameEnded = true;
             gameEndListener.onGameEnd(currentPlayer);
         }
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
-                if(buttons[i][j].getText().isEmpty()){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (buttons[i][j].getText().isEmpty()) {
                     isTie = false;
                     break;
                 }
             }
-            if(!isTie){
+            if (!isTie) {
                 break;
             }
-            if(isTie){
-                gameEnded = true;
-                gameEndListener.onGameEnd(' ');
-            }
         }
+        if (isTie) {
+            gameEnded = true;
+            gameEndListener.onGameEnd(' ');
+        }
+    }
+    public void switchPlayer(){
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
     }
 }
