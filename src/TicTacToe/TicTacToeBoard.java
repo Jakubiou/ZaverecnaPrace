@@ -9,6 +9,7 @@ public class TicTacToeBoard extends JPanel {
     private JButton[][] buttons;
     private char currentPlayer;
     private boolean gameEnded;
+    private boolean isTie = true;
     private GameEndListener gameEndListener;
 
     public TicTacToeBoard(){
@@ -43,6 +44,7 @@ public class TicTacToeBoard extends JPanel {
                         }
                         if(buttons[row][col].getText().isEmpty()){
                             buttons[row][col].setText(Character.toString(currentPlayer));
+                            buttons[row][col].setVerticalAlignment(SwingConstants.CENTER);
                             currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
                             checkWinner();
                         }
@@ -73,6 +75,21 @@ public class TicTacToeBoard extends JPanel {
         if (buttons[0][2].getText().equals(buttons[1][1].getText()) && buttons[0][2].getText().equals(buttons[2][0].getText()) && !buttons[0][2].getText().isEmpty()) {
             gameEnded = true;
             gameEndListener.onGameEnd(currentPlayer);
+        }
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(buttons[i][j].getText().isEmpty()){
+                    isTie = false;
+                    break;
+                }
+            }
+            if(!isTie){
+                break;
+            }
+            if(isTie){
+                gameEnded = true;
+                gameEndListener.onGameEnd(' ');
+            }
         }
     }
 }
