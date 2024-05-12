@@ -20,6 +20,7 @@ public class TicTacToeBoard extends JPanel {
         setPreferredSize(new Dimension(300,300));
         buttons = new JButton[3][3];
         currentPlayer = 'X';
+        gameEnded = false;
         initializeBoard();
     }
     public void initializeBoard(){
@@ -78,6 +79,9 @@ public class TicTacToeBoard extends JPanel {
         if (buttons[0][2].getText().equals(buttons[1][1].getText()) && buttons[0][2].getText().equals(buttons[2][0].getText()) && !buttons[0][2].getText().isEmpty()) {
             gameEnded = true;
             gameEndListener.onGameEnd(currentPlayer);
+        }
+        if(gameEnded){
+            return;
         }
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

@@ -6,6 +6,7 @@ import java.awt.*;
 public class TicTacToeFrame extends JFrame {
     private TicTacToeBoard board;
     private JLabel statusLabel;
+    private JLabel winnerLabel;
 
 
     public TicTacToeFrame(){
@@ -13,21 +14,26 @@ public class TicTacToeFrame extends JFrame {
         statusLabel = new JLabel("Player X's turn", JLabel.CENTER);
         statusLabel.setFont(new Font("Arial",Font.PLAIN,24));
         statusLabel.setPreferredSize(new Dimension(500,50));
+
+        winnerLabel = new JLabel("",JLabel.CENTER);
+        winnerLabel.setFont(new Font("Arial",Font.PLAIN,24));
+        winnerLabel.setPreferredSize(new Dimension(500,50));
+
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.add(winnerLabel,BorderLayout.CENTER);
         setLayout(new BorderLayout());
+        add(topPanel,BorderLayout.NORTH);
         add(board,BorderLayout.CENTER);
         add(statusLabel,BorderLayout.SOUTH);
         board.setTicTacToeFrame(this);
     }
 
-    public void updateStatus(String message){
-        statusLabel.setText(message);
-    }
 
     public void handleGameEnd(char winner){
         if(winner == ' '){
-            updateStatus("It's a tie!");
+            winnerLabel.setText("No winner");
         }else {
-            updateStatus("Player " + winner + " wins!");
+            winnerLabel.setText("Winner: " + winner);
         }
     }
     public void setCurrentPlayer(char currentPlayer){
