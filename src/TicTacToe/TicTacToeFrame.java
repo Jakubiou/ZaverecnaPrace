@@ -9,9 +9,14 @@ public class TicTacToeFrame extends JFrame {
 
 
     public TicTacToeFrame(){
-        board = new TicTacToeBoard();
+        board = new TicTacToeBoard(this::handleGameEnd);
+        statusLabel = new JLabel("Player X's turn", JLabel.CENTER);
+        statusLabel.setFont(new Font("Arial",Font.PLAIN,24));
+        statusLabel.setPreferredSize(new Dimension(500,50));
         setLayout(new BorderLayout());
         add(board,BorderLayout.CENTER);
+        add(statusLabel,BorderLayout.SOUTH);
+        board.setTicTacToeFrame(this);
     }
 
     public void updateStatus(String message){
@@ -24,5 +29,8 @@ public class TicTacToeFrame extends JFrame {
         }else {
             updateStatus("Player " + winner + " wins!");
         }
+    }
+    public void setCurrentPlayer(char currentPlayer){
+        statusLabel.setText("Player " + currentPlayer + "'s turn");
     }
 }
