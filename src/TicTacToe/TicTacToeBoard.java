@@ -13,7 +13,8 @@ public class TicTacToeBoard extends JPanel {
     private GameEndListener gameEndListener;
     private TicTacToeFrame ticTacToeFrame;
 
-    public TicTacToeBoard(){
+    public TicTacToeBoard(GameEndListener gameEndListener){
+        this.gameEndListener = gameEndListener;
         setLayout(new GridLayout(3,3,10,10));
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(300,300));
@@ -96,6 +97,7 @@ public class TicTacToeBoard extends JPanel {
     }
     public void switchPlayer(){
         currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+        ticTacToeFrame.setCurrentPlayer(currentPlayer);
     }
     public void setTicTacToeFrame(TicTacToeFrame ticTacToeFrame){
         this.ticTacToeFrame = ticTacToeFrame;
