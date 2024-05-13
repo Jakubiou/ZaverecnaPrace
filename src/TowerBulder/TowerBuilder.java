@@ -69,4 +69,19 @@ public class TowerBuilder extends JPanel{
         setFocusable(true);
         requestFocusInWindow();
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.RED);
+        for(Block block : towerBlocks){
+            g.setColor(block.getColor());
+            g.fillRect(block.x,block.y,block.width,block.height);
+        }
+        g.setColor(Color.GREEN);
+        g.fillRect(baseBlockX,baseBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT);
+
+        g.setColor(Color.BLUE);
+        g.fillRect(movingBlockX,movingBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT);
+    }
 }
