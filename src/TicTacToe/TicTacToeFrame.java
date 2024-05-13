@@ -2,6 +2,8 @@ package TicTacToe;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TicTacToeFrame extends JFrame {
     private TicTacToeBoard board;
@@ -20,7 +22,17 @@ public class TicTacToeFrame extends JFrame {
         winnerLabel.setPreferredSize(new Dimension(500,50));
 
         JPanel topPanel = new JPanel(new BorderLayout());
+        JButton menuButton = new JButton("Menu");
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameMenu gameMenu = new GameMenu();
+                setVisible(false);
+            }
+        });
+        topPanel.add(menuButton,BorderLayout.WEST);
         topPanel.add(winnerLabel,BorderLayout.CENTER);
+
         setLayout(new BorderLayout());
         add(topPanel,BorderLayout.NORTH);
         add(board,BorderLayout.CENTER);

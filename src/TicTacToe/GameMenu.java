@@ -1,3 +1,5 @@
+package TicTacToe;
+
 import Pong.StartPong;
 import TicTacToe.TicTacToeGUI;
 
