@@ -34,5 +34,12 @@ public class TowerBuilder extends JPanel{
         movingBlockX = baseBlockX;
         movingBlockY = PANEL_HEIGHT - 2 * BLOCK_HEIGHT;
 
+        frame = new JFrame("Tower Builder");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.getContentPane().add(this);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }
