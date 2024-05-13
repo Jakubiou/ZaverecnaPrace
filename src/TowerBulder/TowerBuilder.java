@@ -2,6 +2,8 @@ package TowerBulder;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,5 +43,30 @@ public class TowerBuilder extends JPanel{
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_SPACE && !gameOver){
+                    isSpacePressed = true;
+                    towerBlocks.add(new Block(baseBlockX,baseBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT));
+                    int widthDifference = Math.abs(movingBlockX - baseBlockX);
+                    BASE_BLOCK_WIDTH -= widthDifference;
+                    movingBlockX = baseBlockX;
+                    repaint();
+
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                    isSpacePressed = false;
+                }
+            }
+        });
+
+        setFocusable(true);
+        requestFocusInWindow();
     }
 }
