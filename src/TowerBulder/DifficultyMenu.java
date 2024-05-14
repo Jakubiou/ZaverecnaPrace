@@ -33,4 +33,16 @@ public class DifficultyMenu extends JMenu {
         add(normalMenu);
         add(hardMenu);
     }
+
+    public int getSelectedDifficulty(){
+        if (easyMenu.isSelected()){
+            return 1;
+        } else if (normalMenu.isSelected()) {
+            return 2;
+        } else if (hardMenu.isSelected()) {
+            return 3;
+        }else {
+            return 2;
+        }
+    }
 }
