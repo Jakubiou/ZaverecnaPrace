@@ -2,17 +2,21 @@ package TowerBulder;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TowerBuilder extends JPanel{
+public class TowerBuilder extends JPanel implements ActionListener {
 
     private int PANEL_WIDTH = 600;
     private int PANEL_HEIGHT = 750;
     private int BASE_BLOCK_WIDTH = 200;
     private int BLOCK_HEIGHT = 40;
+    private int BLOCK_STEP = 4;
+    private int BLOCK_FALL_STEP = 20;
 
     private int baseBlockX;
     private int baseBlockY;
@@ -83,5 +87,22 @@ public class TowerBuilder extends JPanel{
 
         g.setColor(Color.BLUE);
         g.fillRect(movingBlockX,movingBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(!isSpacePressed && !gameOver){
+            if(isMovingRight){
+                movingBlockX += BLOCK_STEP;
+                if(movingBlockX + BASE_BLOCK_WIDTH >= PANEL_WIDTH){
+                    isMovingRight = false;
+                }
+            }else {
+                movingBlockX -= BLOCK_STEP;
+                if (movingBlockX <= 0){
+                    isMovingRight = true;
+                }
+            }
+        }
+        repaint();
     }
 }
