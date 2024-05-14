@@ -15,8 +15,12 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private int PANEL_HEIGHT = 750;
     private int BASE_BLOCK_WIDTH = 200;
     private int BLOCK_HEIGHT = 40;
-    private int BLOCK_STEP = 4;
+    private int BLOCK_STEP = 3;
     private int BLOCK_FALL_STEP = 20;
+
+    private int EASY_SPEED = 1;
+    private int NORMAL_SPEED = 2;
+    private int HARD_SPEED = 4;
 
     private int baseBlockX;
     private int baseBlockY;
@@ -26,6 +30,9 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private boolean isSpacePressed = false;
     private  boolean gameOver = false;
 
+    private TowerBuilderScore towerBuilderScore;
+    private Timer timer;
+    private DifficultyMenu difficultyMenu;
     private List<Block> towerBlocks;
     private JFrame frame;
 
