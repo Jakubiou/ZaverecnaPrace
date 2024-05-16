@@ -38,9 +38,9 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private List<Block> towerBlocks;
     private JFrame frame;
     private int difficultyLevel = NORMAL_SPEED;
-    private int speedUpTimer;
-    private int slowDownTimer;
-    private int SCORE_TO_SPEED_UP;
+    private int speedUpTimer = 0;
+    private int slowDownTimer = 0;
+    private int SCORE_TO_SPEED_UP = 10;
 
     public TowerBuilder(){
         setPreferredSize(new Dimension(PANEL_WIDTH,PANEL_HEIGHT));
@@ -148,17 +148,18 @@ public class TowerBuilder extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(!isSpacePressed && !gameOver){
             if(isMovingRight){
-                movingBlockX += BLOCK_STEP;
+                movingBlockX += BLOCK_STEP * difficultyLevel;
                 if(movingBlockX + BASE_BLOCK_WIDTH >= PANEL_WIDTH){
                     isMovingRight = false;
                 }
             }else {
-                movingBlockX -= BLOCK_STEP;
+                movingBlockX -= BLOCK_STEP * difficultyLevel;
                 if (movingBlockX <= 0){
                     isMovingRight = true;
                 }
             }
         }
+        checkGameOver();
         updateDifficulty();
 
         if(movingBlockY <= PANEL_HEIGHT / 2){
@@ -186,6 +187,14 @@ public class TowerBuilder extends JPanel implements ActionListener {
             slowDownTimer--;
             if (slowDownTimer == 0) {
                 timer.setDelay(10);
+            }
+        }
+    }
+    public void checkGameOver(){
+        if(isSpacePressed && !gameOver){
+            if(movingBlockX + BASE_BLOCK_WIDTH < baseBlockX || movingBlockX > baseBlockX + BASE_BLOCK_WIDTH){
+                gameOver = true;
+                repaint();
             }
         }
     }
