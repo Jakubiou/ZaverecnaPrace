@@ -2,17 +2,17 @@ package TowerBulder;
 
 public class TowerBuilderScore {
 
-    private int score;
+    private static int score;
 
     public TowerBuilderScore(){
         this.score = 0;
     }
 
-    public void increaseScore(){
+    public static void increaseScore(){
         score++;
     }
 
-    public int getScore(){
+    public static int getScore(){
         return score;
     }
 }
