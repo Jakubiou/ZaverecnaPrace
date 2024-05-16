@@ -159,6 +159,15 @@ public class TowerBuilder extends JPanel implements ActionListener {
                 }
             }
         }
+        updateDifficulty();
+
+        if(movingBlockY <= PANEL_HEIGHT / 2){
+            baseBlockY += BLOCK_FALL_STEP;
+            movingBlockY += BLOCK_FALL_STEP;
+            for (Block block : towerBlocks){
+                block.y += BLOCK_FALL_STEP;
+            }
+        }
         repaint();
     }
     private void updateDifficulty() {
