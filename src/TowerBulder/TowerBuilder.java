@@ -92,8 +92,6 @@ public class TowerBuilder extends JPanel implements ActionListener {
         menuPanel.add(menuButton,BorderLayout.WEST);
         frame.getContentPane().add(menuPanel,BorderLayout.NORTH);
 
-
-
         frame.getContentPane().add(this);
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -107,7 +105,10 @@ public class TowerBuilder extends JPanel implements ActionListener {
                     towerBlocks.add(new Block(baseBlockX,baseBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT));
                     int widthDifference = Math.abs(movingBlockX - baseBlockX);
                     BASE_BLOCK_WIDTH -= widthDifference;
+                    baseBlockY -= 40;
                     movingBlockX = baseBlockX;
+                    movingBlockY -= BLOCK_HEIGHT;
+                    TowerBuilderScore.increaseScore();
                     repaint();
 
                 }
