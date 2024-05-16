@@ -141,8 +141,17 @@ public class TowerBuilder extends JPanel implements ActionListener {
         g.fillRect(movingBlockX,movingBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT);
 
         g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial",Font.BOLD,30));
-        g.drawString("Score: " + TowerBuilderScore.getScore(),40,100);
+        g.setFont(new Font("Arial",Font.BOLD,50));
+        g.drawString("Score: " + TowerBuilderScore.getScore(),40,70);
+
+        if(gameOver){
+            g.setFont(new Font("Arial",Font.BOLD,50));
+            String gameOverText = "Game Over";
+            int textWidth = g.getFontMetrics().stringWidth(gameOverText);
+            int x = (PANEL_WIDTH - textWidth) / 2;
+            int y = PANEL_HEIGHT / 2;
+            g.drawString(gameOverText,x,y);
+        }
     }
     @Override
     public void actionPerformed(ActionEvent e){
