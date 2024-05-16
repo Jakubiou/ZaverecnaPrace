@@ -1,5 +1,7 @@
 package TowerBulder;
 
+import TicTacToe.GameMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -72,6 +74,26 @@ public class TowerBuilder extends JPanel implements ActionListener {
         frame = new JFrame("Tower Builder");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(Box.createHorizontalGlue());
+        menuBar.add(difficultyMenu);
+        frame.setJMenuBar(menuBar);
+
+        JButton menuButton = new JButton("Menu");
+        menuButton.setPreferredSize(new Dimension(70,30));
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameMenu gameMenu = new GameMenu();
+            }
+        });
+        JPanel menuPanel = new JPanel(new BorderLayout());
+        menuPanel.add(menuButton,BorderLayout.WEST);
+        frame.getContentPane().add(menuPanel,BorderLayout.NORTH);
+
+
+
         frame.getContentPane().add(this);
         frame.pack();
         frame.setLocationRelativeTo(null);
