@@ -2,6 +2,7 @@ package TicTacToe;
 
 import Pong.StartPong;
 import TicTacToe.TicTacToeGUI;
+import TowerBulder.TowerBuilder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,6 +34,7 @@ public class GameMenu extends JFrame {
         towerBuilderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                TowerBuilder towerBuilder = new TowerBuilder();
                 setVisible(false);
             }
         });
