@@ -35,17 +35,39 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private DifficultyMenu difficultyMenu;
     private List<Block> towerBlocks;
     private JFrame frame;
+    private int difficultyLevel = NORMAL_SPEED;
+    private int speedUpTimer;
+    private int slowDownTimer;
+    private int SCORE_TO_SPEED_UP;
 
     public TowerBuilder(){
         setPreferredSize(new Dimension(PANEL_WIDTH,PANEL_HEIGHT));
         setBackground(Color.WHITE);
 
+        towerBuilderScore = new TowerBuilderScore();
+        timer = new Timer(10,this);
+        timer.start();
         towerBlocks = new ArrayList<>();
 
         baseBlockX = PANEL_WIDTH / 2 - BASE_BLOCK_WIDTH / 2;
         baseBlockY = PANEL_HEIGHT - BLOCK_HEIGHT;
         movingBlockX = baseBlockX;
         movingBlockY = PANEL_HEIGHT - 2 * BLOCK_HEIGHT;
+
+        difficultyMenu = new DifficultyMenu(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedDifficulty = difficultyMenu.getSelectedDifficulty();
+                if(selectedDifficulty == 1){
+                    difficultyLevel = EASY_SPEED;
+                } else if (selectedDifficulty == 2) {
+                    difficultyLevel = NORMAL_SPEED;
+                } else if (selectedDifficulty == 3) {
+                    difficultyLevel = HARD_SPEED;
+                }
+                updateDifficulty();
+            }
+        });
 
         frame = new JFrame("Tower Builder");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -111,5 +133,24 @@ public class TowerBuilder extends JPanel implements ActionListener {
             }
         }
         repaint();
+    }
+    private void updateDifficulty() {
+        if (TowerBuilderScore.getScore() >= SCORE_TO_SPEED_UP) {
+            timer.setDelay(5); // Zvýšení rychlosti hry
+        }
+
+        if (speedUpTimer > 0) {
+            speedUpTimer--;
+            if (speedUpTimer == 0) {
+                timer.setDelay(10);
+            }
+        }
+
+        if (slowDownTimer > 0) {
+            slowDownTimer--;
+            if (slowDownTimer == 0) {
+                timer.setDelay(10);
+            }
+        }
     }
 }
