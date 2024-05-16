@@ -86,6 +86,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameMenu gameMenu = new GameMenu();
+                frame.setVisible(false);
             }
         });
         JPanel menuPanel = new JPanel(new BorderLayout());
