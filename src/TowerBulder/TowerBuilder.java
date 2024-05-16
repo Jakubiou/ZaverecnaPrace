@@ -139,6 +139,10 @@ public class TowerBuilder extends JPanel implements ActionListener {
 
         g.setColor(Color.BLUE);
         g.fillRect(movingBlockX,movingBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT);
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial",Font.BOLD,30));
+        g.drawString("Score: " + TowerBuilderScore.getScore(),40,100);
     }
     @Override
     public void actionPerformed(ActionEvent e){
