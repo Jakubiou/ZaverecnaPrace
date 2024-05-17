@@ -25,7 +25,7 @@ public class GameMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 StartPong startPong = new StartPong();
                 startPong.startPong();
-                setVisible(false);
+                dispose();
             }
         });
         panel.add(pongButton);
@@ -35,7 +35,7 @@ public class GameMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TowerBuilder towerBuilder = new TowerBuilder();
-                setVisible(false);
+                dispose();
             }
         });
         panel.add(towerBuilderButton);
@@ -46,7 +46,7 @@ public class GameMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 TicTacToeGUI ticTacToeGUI = new TicTacToeGUI();
                 ticTacToeGUI.startTicTacToe();
-                setVisible(false);
+                dispose();
             }
         });
         panel.add(ticTacToeButton);

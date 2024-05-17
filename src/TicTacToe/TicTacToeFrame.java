@@ -27,7 +27,7 @@ public class TicTacToeFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameMenu gameMenu = new GameMenu();
-                setVisible(false);
+                dispose();
             }
         });
         topPanel.add(menuButton,BorderLayout.WEST);

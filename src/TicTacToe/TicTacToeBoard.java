@@ -22,6 +22,7 @@ public class TicTacToeBoard extends JPanel {
         gameEnded = false;
         initializeBoard();
     }
+
     public void initializeBoard(){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
@@ -58,6 +59,7 @@ public class TicTacToeBoard extends JPanel {
             }
         }
     }
+
     public void checkWinner() {
         for (int i = 0; i < 3; i++) {
             if (buttons[i][0].getText().equals(buttons[i][1].getText()) && buttons[i][0].getText().equals(buttons[i][2].getText()) && !buttons[i][0].getText().isEmpty()) {
@@ -115,10 +117,12 @@ public class TicTacToeBoard extends JPanel {
             buttons[row][col].setBackground(Color.GREEN);
         }
     }
+
     public void switchPlayer(){
         currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
         ticTacToeFrame.setCurrentPlayer(currentPlayer);
     }
+
     public void setTicTacToeFrame(TicTacToeFrame ticTacToeFrame){
         this.ticTacToeFrame = ticTacToeFrame;
     }
