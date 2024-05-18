@@ -42,7 +42,7 @@ public class GameMenu extends JFrame {
     panel.add(jLabel);
     panel.add(Box.createRigidArea(new Dimension(0,50)));
 
-        JButton pongButton = new JButton("Play Pong");
+        JButton pongButton = createMenuButton("Play Pong");
         pongButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,7 +53,7 @@ public class GameMenu extends JFrame {
         });
         panel.add(pongButton);
 
-        JButton towerBuilderButton = new JButton("Play Tower Builder");
+        JButton towerBuilderButton = createMenuButton("Play Tower Builder");
         towerBuilderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,7 +63,7 @@ public class GameMenu extends JFrame {
         });
         panel.add(towerBuilderButton);
 
-        JButton ticTacToeButton = new JButton("Play Tic-Tac-Toe");
+        JButton ticTacToeButton = createMenuButton("Play Tic-Tac-Toe");
         ticTacToeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,5 +76,16 @@ public class GameMenu extends JFrame {
 
         add(panel);
         setVisible(true);
+    }
+    private JButton createMenuButton(String text) {
+        JButton button = new JButton(text);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setFont(new Font("Arial", Font.BOLD, 24));
+        button.setFocusPainted(false);
+        button.setBackground(new Color(255, 255, 255));
+        button.setForeground(new Color(0, 85, 170));
+        button.setPreferredSize(new Dimension(400, 100));
+        button.setMaximumSize(new Dimension(400, 100));
+        return button;
     }
 }
