@@ -31,6 +31,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private boolean isMovingRight = true;
     private boolean isSpacePressed = false;
     private  boolean gameOver = false;
+    private boolean blockPlaced = false;
 
     private TowerBuilderScore towerBuilderScore;
     private Timer timer;
@@ -101,8 +102,9 @@ public class TowerBuilder extends JPanel implements ActionListener {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_SPACE && !gameOver){
+                if(e.getKeyCode() == KeyEvent.VK_SPACE && !gameOver && !blockPlaced){
                     isSpacePressed = true;
+                    blockPlaced = true;
                     towerBlocks.add(new Block(baseBlockX,baseBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT));
                     int widthDifference = Math.abs(movingBlockX - baseBlockX);
                     BASE_BLOCK_WIDTH -= widthDifference;
@@ -119,6 +121,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
             public void keyReleased(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_SPACE){
                     isSpacePressed = false;
+                    blockPlaced = false;
                 }
             }
         });
