@@ -15,12 +15,13 @@ public class GameMenu extends JFrame {
     public GameMenu() {
         setTitle("Game Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400,500);
+        setSize(500,700);
         setLocationRelativeTo(null);
+        setResizable(false);
     JPanel panel = new JPanel() {
         @Override
-        public void paintComponents(Graphics g) {
-            super.paintComponents(g);
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
             Graphics2D graphics2D = (Graphics2D) g;
             int width = getWidth();
             int height = getHeight();
