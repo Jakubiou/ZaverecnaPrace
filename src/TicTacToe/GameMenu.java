@@ -86,6 +86,17 @@ public class GameMenu extends JFrame {
         button.setForeground(new Color(0, 85, 170));
         button.setPreferredSize(new Dimension(400, 100));
         button.setMaximumSize(new Dimension(400, 100));
-        return button;
+
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                button.setBackground(new Color(0,85,170));
+                button.setForeground(new Color(255,255,255));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                button.setBackground(new Color(255,255,255));
+                button.setForeground(new Color(0,85,170));
+            }
+        });
+                return button;
     }
 }
