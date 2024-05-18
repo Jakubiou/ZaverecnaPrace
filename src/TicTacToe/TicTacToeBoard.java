@@ -15,7 +15,7 @@ public class TicTacToeBoard extends JPanel {
     public TicTacToeBoard(GameEndListener gameEndListener){
         this.gameEndListener = gameEndListener;
         setLayout(new GridLayout(3,3,20,20));
-        setBackground(Color.WHITE);
+        setBackground(Color.BLACK);
         setPreferredSize(new Dimension(600,600));
         buttons = new JButton[3][3];
         currentPlayer = 'X';
@@ -26,6 +26,7 @@ public class TicTacToeBoard extends JPanel {
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 JButton button = new JButton();
+                button.setBackground(new Color(20,180,230));
                 button.setFont(new Font("Arial",Font.BOLD,100));
                 button.addActionListener(new ActionListener() {
                     @Override
@@ -120,7 +121,7 @@ public class TicTacToeBoard extends JPanel {
         for(int i = 0; i < indexes.length;i += 2){
             int row = indexes[i];
             int col = indexes[i + 1];
-            buttons[row][col].setBackground(Color.YELLOW);
+            buttons[row][col].setBackground(new Color(230,230,90));
         }
     }
 
