@@ -22,7 +22,6 @@ public class TicTacToeBoard extends JPanel {
         gameEnded = false;
         initializeBoard();
     }
-
     public void initializeBoard(){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
@@ -59,7 +58,6 @@ public class TicTacToeBoard extends JPanel {
             }
         }
     }
-
     public void checkWinner() {
         for (int i = 0; i < 3; i++) {
             if (buttons[i][0].getText().equals(buttons[i][1].getText()) && buttons[i][0].getText().equals(buttons[i][2].getText()) && !buttons[i][0].getText().isEmpty()) {
@@ -106,6 +104,7 @@ public class TicTacToeBoard extends JPanel {
         }
         if (isTie) {
             gameEnded = true;
+            highlightTieCells(0,0,0,1,0,2,1,0,1,1,1,2,2,0,2,1,2,2);
             gameEndListener.onGameEnd(' ');
         }
     }
@@ -115,6 +114,13 @@ public class TicTacToeBoard extends JPanel {
             int row = indexes[i];
             int col = indexes[i + 1];
             buttons[row][col].setBackground(Color.GREEN);
+        }
+    }
+    public void highlightTieCells(int... indexes){
+        for(int i = 0; i < indexes.length;i += 2){
+            int row = indexes[i];
+            int col = indexes[i + 1];
+            buttons[row][col].setBackground(Color.YELLOW);
         }
     }
 
