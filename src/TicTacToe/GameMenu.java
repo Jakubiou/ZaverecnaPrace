@@ -5,6 +5,7 @@ import TicTacToe.TicTacToeGUI;
 import TowerBulder.TowerBuilder;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +17,23 @@ public class GameMenu extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400,500);
         setLocationRelativeTo(null);
-        JPanel panel = new JPanel();
+    JPanel panel = new JPanel() {
+        @Override
+        public void paintComponents(Graphics g) {
+            super.paintComponents(g);
+            Graphics2D graphics2D = (Graphics2D) g;
+            int width = getWidth();
+            int height = getHeight();
+            Color color1 = new Color(85, 170, 255);
+            Color color2 = new Color(0, 85, 170);
+            GradientPaint gradientPaint = new GradientPaint(0, 0, color1, 0, height, color2);
+            graphics2D.setPaint(gradientPaint);
+            graphics2D.fillRect(0, 0, width, height);
+        }
+    };
+    panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
+    panel.setBorder(new EmptyBorder(50,50,50,50));
+
         panel.setLayout(new GridLayout(3,1,10,10));
         panel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
         JButton pongButton = new JButton("Play Pong");
