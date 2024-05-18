@@ -34,8 +34,13 @@ public class GameMenu extends JFrame {
     panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
     panel.setBorder(new EmptyBorder(50,50,50,50));
 
-        panel.setLayout(new GridLayout(3,1,10,10));
-        panel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+    JLabel jLabel = new JLabel("Game Menu");
+    jLabel.setFont(new Font("Arial",Font.BOLD,35));
+    jLabel.setForeground(Color.WHITE);
+    jLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    panel.add(jLabel);
+    panel.add(Box.createRigidArea(new Dimension(0,50)));
+
         JButton pongButton = new JButton("Play Pong");
         pongButton.addActionListener(new ActionListener() {
             @Override
