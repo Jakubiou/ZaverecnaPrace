@@ -122,11 +122,18 @@ public class TowerBuilder extends JPanel implements ActionListener {
                     int widthDifference = Math.abs(movingBlockX - baseBlockX);
                     BASE_BLOCK_WIDTH -= widthDifference;
                     baseBlockY -= 40;
-                    movingBlockX = baseBlockX;
-                    movingBlockY -= BLOCK_HEIGHT;
-                    TowerBuilderScore.increaseScore();
-                    repaint();
-
+                    if(movingBlockX + BASE_BLOCK_WIDTH / 2 >= baseBlockX + BASE_BLOCK_WIDTH / 2) {
+                        baseBlockX = baseBlockX + widthDifference;
+                        movingBlockX = baseBlockX;
+                        movingBlockY -= BLOCK_HEIGHT;
+                        TowerBuilderScore.increaseScore();
+                        repaint();
+                    }else if(movingBlockX + BASE_BLOCK_WIDTH / 2 < baseBlockX + BASE_BLOCK_WIDTH /2){
+                        movingBlockX = baseBlockX;
+                        movingBlockY -= BLOCK_HEIGHT;
+                        TowerBuilderScore.increaseScore();
+                        repaint();
+                    }
                 }
             }
 
@@ -147,7 +154,6 @@ public class TowerBuilder extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         gradientBackground.drawBackground(g,PANEL_WIDTH,PANEL_HEIGHT);
-        g.setColor(Color.RED);
         for(Block block : towerBlocks){
             g.setColor(block.getColor());
             g.fillRect(block.x,block.y,block.width,block.height);
@@ -200,7 +206,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
     }
     private void updateDifficulty() {
         if (TowerBuilderScore.getScore() >= SCORE_TO_SPEED_UP) {
-            timer.setDelay(5); // Zvýšení rychlosti hry
+            timer.setDelay(5);
         }
 
         if (speedUpTimer > 0) {
