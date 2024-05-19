@@ -9,6 +9,7 @@ public class TicTacToeFrame extends JFrame {
     private TicTacToeBoard board;
     private JLabel statusLabel;
     private JLabel winnerLabel;
+    TicTacToeGUI ticTacToeGUI = new TicTacToeGUI();
     Buttons buttons = new Buttons();
 
 
@@ -20,7 +21,7 @@ public class TicTacToeFrame extends JFrame {
 
         winnerLabel = new JLabel("",JLabel.CENTER);
         winnerLabel.setFont(new Font("Arial",Font.PLAIN,24));
-        winnerLabel.setPreferredSize(new Dimension(500,50));
+        winnerLabel.setPreferredSize(new Dimension(350,50));
 
         JPanel topPanel = new JPanel(new BorderLayout());
         JButton menuButton = buttons.createButton("Menu",100,20);
@@ -31,6 +32,15 @@ public class TicTacToeFrame extends JFrame {
                 dispose();
             }
         });
+        JButton playAgainButton = buttons.createButton("Play Again",180,20);
+        playAgainButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ticTacToeGUI.startTicTacToe();
+            }
+        });
+        topPanel.add(playAgainButton,BorderLayout.EAST);
         topPanel.add(menuButton,BorderLayout.WEST);
         topPanel.add(winnerLabel,BorderLayout.CENTER);
 
