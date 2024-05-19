@@ -9,6 +9,7 @@ public class TicTacToeFrame extends JFrame {
     private TicTacToeBoard board;
     private JLabel statusLabel;
     private JLabel winnerLabel;
+    Buttons buttons = new Buttons();
 
 
     public TicTacToeFrame(){
@@ -22,7 +23,7 @@ public class TicTacToeFrame extends JFrame {
         winnerLabel.setPreferredSize(new Dimension(500,50));
 
         JPanel topPanel = new JPanel(new BorderLayout());
-        JButton menuButton = new JButton("Menu");
+        JButton menuButton = buttons.createButton("Menu",100,20);
         menuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 
 public class GameMenu extends JFrame {
 
+    Buttons buttons = new Buttons();
+
     public GameMenu() {
         setTitle("Game Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,7 +44,7 @@ public class GameMenu extends JFrame {
     panel.add(jLabel);
     panel.add(Box.createRigidArea(new Dimension(0,50)));
 
-        JButton pongButton = createMenuButton("Play Pong");
+        JButton pongButton = buttons.createButton("Play Pong",400,100);
         pongButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,7 +55,7 @@ public class GameMenu extends JFrame {
         });
         panel.add(pongButton);
 
-        JButton towerBuilderButton = createMenuButton("Play Tower Builder");
+        JButton towerBuilderButton = buttons.createButton("Play Tower Builder",400,100);
         towerBuilderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,7 +65,7 @@ public class GameMenu extends JFrame {
         });
         panel.add(towerBuilderButton);
 
-        JButton ticTacToeButton = createMenuButton("Play Tic-Tac-Toe");
+        JButton ticTacToeButton = buttons.createButton("Play Tic-Tac-Toe",400,100);
         ticTacToeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,27 +78,5 @@ public class GameMenu extends JFrame {
 
         add(panel);
         setVisible(true);
-    }
-    private JButton createMenuButton(String text) {
-        JButton button = new JButton(text);
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setFont(new Font("Arial", Font.BOLD, 24));
-        button.setFocusPainted(false);
-        button.setBackground(new Color(255, 255, 255));
-        button.setForeground(new Color(0, 85, 170));
-        button.setPreferredSize(new Dimension(400, 100));
-        button.setMaximumSize(new Dimension(400, 100));
-
-        button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt){
-                button.setBackground(new Color(0,85,170));
-                button.setForeground(new Color(255,255,255));
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt){
-                button.setBackground(new Color(255,255,255));
-                button.setForeground(new Color(0,85,170));
-            }
-        });
-                return button;
     }
 }
