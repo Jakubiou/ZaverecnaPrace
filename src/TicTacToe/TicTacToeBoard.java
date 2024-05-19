@@ -63,7 +63,7 @@ public class TicTacToeBoard extends JPanel {
         for (int i = 0; i < 3; i++) {
             if (buttons[i][0].getText().equals(buttons[i][1].getText()) && buttons[i][0].getText().equals(buttons[i][2].getText()) && !buttons[i][0].getText().isEmpty()) {
                 gameEnded = true;
-                highlightWinningCells(i,0,i,1,i,2);
+                highlightCells(Color.GREEN,i,0,i,1,i,2);
                 gameEndListener.onGameEnd(currentPlayer);
                 return;
             }
@@ -71,20 +71,20 @@ public class TicTacToeBoard extends JPanel {
         for (int i = 0; i < 3; i++) {
             if (buttons[0][i].getText().equals(buttons[1][i].getText()) && buttons[0][i].getText().equals(buttons[2][i].getText()) && !buttons[0][i].getText().isEmpty()) {
                 gameEnded = true;
-                highlightWinningCells(0,i,1,i,2,i);
+                highlightCells(Color.GREEN,0,i,1,i,2,i);
                 gameEndListener.onGameEnd(currentPlayer);
                 return;
             }
         }
         if (buttons[0][0].getText().equals(buttons[1][1].getText()) && buttons[0][0].getText().equals(buttons[2][2].getText()) && !buttons[0][0].getText().isEmpty()) {
             gameEnded = true;
-            highlightWinningCells(0,0,1,1,2,2);
+            highlightCells(Color.GREEN,0,0,1,1,2,2);
             gameEndListener.onGameEnd(currentPlayer);
             return;
         }
         if (buttons[0][2].getText().equals(buttons[1][1].getText()) && buttons[0][2].getText().equals(buttons[2][0].getText()) && !buttons[0][2].getText().isEmpty()) {
             gameEnded = true;
-            highlightWinningCells(0,2,1,1,2,0);
+            highlightCells(Color.GREEN,0,2,1,1,2,0);
             gameEndListener.onGameEnd(currentPlayer);
             return;
         }
@@ -105,23 +105,16 @@ public class TicTacToeBoard extends JPanel {
         }
         if (isTie) {
             gameEnded = true;
-            highlightTieCells(0,0,0,1,0,2,1,0,1,1,1,2,2,0,2,1,2,2);
+            highlightCells(Color.YELLOW,0,0,0,1,0,2,1,0,1,1,1,2,2,0,2,1,2,2);
             gameEndListener.onGameEnd(' ');
         }
     }
 
-    public void highlightWinningCells(int... indexes){
+    public void highlightCells(Color color,int... indexes){
         for(int i = 0; i < indexes.length;i += 2){
             int row = indexes[i];
             int col = indexes[i + 1];
-            buttons[row][col].setBackground(Color.GREEN);
-        }
-    }
-    public void highlightTieCells(int... indexes){
-        for(int i = 0; i < indexes.length;i += 2){
-            int row = indexes[i];
-            int col = indexes[i + 1];
-            buttons[row][col].setBackground(new Color(230,230,90));
+            buttons[row][col].setBackground(color);
         }
     }
 
