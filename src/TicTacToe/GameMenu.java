@@ -76,6 +76,17 @@ public class GameMenu extends JFrame {
         });
         panel.add(ticTacToeButton);
 
+        panel.add(Box.createRigidArea(new Dimension(0,20)));
+
+        JButton exitButton = buttons.createButton("Exit Menu",400,100);
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        panel.add(exitButton);
+
         add(panel);
         setVisible(true);
     }
