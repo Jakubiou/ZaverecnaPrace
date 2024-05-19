@@ -44,6 +44,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private int slowDownTimer = 0;
     private int SCORE_TO_SPEED_UP = 10;
     private GradientBackground gradientBackground;
+    private JButton playAgainButton;
 
     public TowerBuilder(){
         setPreferredSize(new Dimension(PANEL_WIDTH,PANEL_HEIGHT));
@@ -92,7 +93,17 @@ public class TowerBuilder extends JPanel implements ActionListener {
                 frame.dispose();
             }
         });
+        playAgainButton = buttons.createButton("Play Again",180,20);
+        playAgainButton.setVisible(false);
+        playAgainButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                TowerBuilder towerBuilder = new TowerBuilder();
+            }
+        });
         JPanel menuPanel = new JPanel(new BorderLayout());
+        menuPanel.add(playAgainButton,BorderLayout.EAST);
         menuPanel.add(menuButton,BorderLayout.WEST);
         frame.getContentPane().add(menuPanel,BorderLayout.NORTH);
 
@@ -210,6 +221,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
         if(isSpacePressed && !gameOver){
             if(movingBlockX + BASE_BLOCK_WIDTH < baseBlockX || movingBlockX > baseBlockX + BASE_BLOCK_WIDTH){
                 gameOver = true;
+                playAgainButton.setVisible(true);
                 repaint();
             }
         }
