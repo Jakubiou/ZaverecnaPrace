@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TicTacToeBoard extends JPanel {
     private JButton[][] buttons;
@@ -51,6 +53,21 @@ public class TicTacToeBoard extends JPanel {
                             buttons[row][col].setVerticalAlignment(SwingConstants.CENTER);
                             checkWinner();
                             switchPlayer();
+                        }
+                    }
+                });
+                button.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        if(!gameEnded && button.getText().isEmpty()){
+                            button.setBackground(new Color(0,130,200));
+                        }
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        if(!gameEnded && button.getText().isEmpty()){
+                            button.setBackground(new Color(20,180,230));
                         }
                     }
                 });
