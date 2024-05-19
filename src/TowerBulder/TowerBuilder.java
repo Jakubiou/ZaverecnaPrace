@@ -43,10 +43,11 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private int speedUpTimer = 0;
     private int slowDownTimer = 0;
     private int SCORE_TO_SPEED_UP = 10;
+    private GradientBackground gradientBackground;
 
     public TowerBuilder(){
         setPreferredSize(new Dimension(PANEL_WIDTH,PANEL_HEIGHT));
-        setBackground(Color.WHITE);
+        gradientBackground = new GradientBackground(Color.BLUE,Color.CYAN);
 
         towerBuilderScore = new TowerBuilderScore();
         timer = new Timer(10,this);
@@ -134,6 +135,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        gradientBackground.drawBackground(g,PANEL_WIDTH,PANEL_HEIGHT);
         g.setColor(Color.RED);
         for(Block block : towerBlocks){
             g.setColor(block.getColor());
@@ -145,7 +147,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
         g.setColor(Color.BLUE);
         g.fillRect(movingBlockX,movingBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT);
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.setFont(new Font("Arial",Font.BOLD,50));
         g.drawString("Score: " + TowerBuilderScore.getScore(),40,70);
 
