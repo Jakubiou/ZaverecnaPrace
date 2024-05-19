@@ -8,7 +8,7 @@ public class Buttons {
     public Buttons() {
     }
 
-    protected JButton createMenuButton(String text,int width,int height) {
+    protected JButton createButton(String text,int width,int height) {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setFont(new Font("Arial", Font.BOLD, 24));
