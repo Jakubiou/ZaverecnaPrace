@@ -9,6 +9,7 @@ public class TicTacToeFrame extends JFrame {
     private TicTacToeBoard board;
     private JLabel statusLabel;
     private JLabel winnerLabel;
+    private JButton playAgainButton;
     TicTacToeGUI ticTacToeGUI = new TicTacToeGUI();
     Buttons buttons = new Buttons();
 
@@ -32,7 +33,8 @@ public class TicTacToeFrame extends JFrame {
                 dispose();
             }
         });
-        JButton playAgainButton = buttons.createButton("Play Again",180,20);
+        playAgainButton = buttons.createButton("Play Again",180,20);
+        playAgainButton.setVisible(false);
         playAgainButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,8 +60,12 @@ public class TicTacToeFrame extends JFrame {
         }else {
             winnerLabel.setText("Winner: " + winner);
         }
+        showPlayAgainButton();
     }
     public void setCurrentPlayer(char currentPlayer){
         statusLabel.setText("Player " + currentPlayer + "'s turn");
+    }
+    public void showPlayAgainButton(){
+        playAgainButton.setVisible(true);
     }
 }
