@@ -2,7 +2,7 @@ package TicTacToe;
 
 import Pong.StartPong;
 import TicTacToe.TicTacToeGUI;
-import TowerBulder.TowerBuilder;
+import TowerBuilder.TowerBuilder;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

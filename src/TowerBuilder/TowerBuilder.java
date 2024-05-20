@@ -1,4 +1,4 @@
-package TowerBulder;
+package TowerBuilder;
 
 import TicTacToe.Buttons;
 import TicTacToe.GameMenu;

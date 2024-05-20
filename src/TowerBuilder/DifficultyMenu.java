@@ -1,4 +1,4 @@
-package TowerBulder;
+package TowerBuilder;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
