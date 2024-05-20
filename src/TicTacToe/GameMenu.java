@@ -59,7 +59,8 @@ public class GameMenu extends JFrame {
         towerBuilderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TowerBuilder towerBuilder = new TowerBuilder();
+                JFrame newFrame = new JFrame("Tower Builder");
+                new TowerBuilder(newFrame);
                 dispose();
             }
         });
