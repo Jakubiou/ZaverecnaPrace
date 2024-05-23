@@ -173,9 +173,21 @@ public class TowerBuilder extends JPanel implements ActionListener {
             String gameOverText = "Game Over";
             int textWidth = g.getFontMetrics().stringWidth(gameOverText);
             int x = (PANEL_WIDTH - textWidth) / 2;
-            int y = PANEL_HEIGHT / 2;
+            int y = PANEL_HEIGHT / 2 - 100;
             g.drawString(gameOverText,x,y);
         }
+    }
+
+    private void drawHighScores(Graphics g){
+        List<HighScore> highScores = HighScoreManager.getHighScores();
+        g.setFont(new Font("Arial",Font.PLAIN,20));
+        int y = PANEL_HEIGHT / 2 + 40;
+        for (HighScore highScore : highScores){
+            g.drawString(highScore.getName() + ": " + highScore.getScore(),PANEL_WIDTH / 2 - 50,y);
+            y += 30;
+        }
+        g.setFont(new Font("Arial",Font.BOLD,40));
+        g.drawString("High Scores",PANEL_WIDTH / 2 - 120,PANEL_HEIGHT / 2);
     }
     @Override
     public void actionPerformed(ActionEvent e){
