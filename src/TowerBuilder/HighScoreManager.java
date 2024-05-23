@@ -1,19 +1,21 @@
 package TowerBuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HighScoreManager {
 
-    private List<HighScore> highScores = new ArrayList<>();
+    private static List<HighScore> highScores = new ArrayList<>();
 
     public void addHighScore(String name,int score){
         highScores.add(new HighScore(name,score));
+        Collections.sort(highScores);
         if(highScores.size() > 3){
             highScores.remove(3);
         }
     }
-    public List<HighScore> getHighScores(){
+    public static List<HighScore> getHighScores(){
         return  highScores;
     }
     public boolean isHighScore(int score){
