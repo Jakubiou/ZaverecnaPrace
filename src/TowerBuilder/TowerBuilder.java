@@ -175,6 +175,7 @@ public class TowerBuilder extends JPanel implements ActionListener {
             int x = (PANEL_WIDTH - textWidth) / 2;
             int y = PANEL_HEIGHT / 2 - 100;
             g.drawString(gameOverText,x,y);
+            drawHighScores(g);
         }
     }
 
@@ -188,6 +189,13 @@ public class TowerBuilder extends JPanel implements ActionListener {
         }
         g.setFont(new Font("Arial",Font.BOLD,40));
         g.drawString("High Scores",PANEL_WIDTH / 2 - 120,PANEL_HEIGHT / 2);
+
+        g.setColor(new Color(190,195,45));
+        g.fillOval(PANEL_WIDTH / 2 - 100,PANEL_HEIGHT / 2 + 22,25,25);
+        g.setColor(new Color(170,170,170));
+        g.fillOval(PANEL_WIDTH / 2 - 100,PANEL_HEIGHT / 2 + 55,25,25);
+        g.setColor(new Color(155,120,50));
+        g.fillOval(PANEL_WIDTH / 2 - 100,PANEL_HEIGHT / 2 + 88,25,25);
     }
     @Override
     public void actionPerformed(ActionEvent e){
