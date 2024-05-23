@@ -196,6 +196,11 @@ public class TowerBuilder extends JPanel implements ActionListener {
         g.fillOval(PANEL_WIDTH / 2 - 100,PANEL_HEIGHT / 2 + 55,25,25);
         g.setColor(new Color(155,120,50));
         g.fillOval(PANEL_WIDTH / 2 - 100,PANEL_HEIGHT / 2 + 88,25,25);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial",Font.PLAIN,18));
+        g.drawString(" 1",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 41);
+        g.drawString(" 2",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 74);
+        g.drawString(" 3",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 107);
     }
     @Override
     public void actionPerformed(ActionEvent e){
