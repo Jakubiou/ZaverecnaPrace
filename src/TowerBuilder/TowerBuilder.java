@@ -115,20 +115,21 @@ public class TowerBuilder extends JPanel implements ActionListener {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_SPACE && !gameOver && !blockPlaced){
+                if(!gameOver && e.getKeyCode() == KeyEvent.VK_SPACE && !gameOver && !blockPlaced){
                     isSpacePressed = true;
                     blockPlaced = true;
+                    checkGameOver();
                     towerBlocks.add(new Block(baseBlockX,baseBlockY,BASE_BLOCK_WIDTH,BLOCK_HEIGHT));
                     int widthDifference = Math.abs(movingBlockX - baseBlockX);
                     BASE_BLOCK_WIDTH -= widthDifference;
                     baseBlockY -= 40;
-                    if(movingBlockX + BASE_BLOCK_WIDTH / 2 >= baseBlockX + BASE_BLOCK_WIDTH / 2) {
+                    if(!gameOver && movingBlockX + BASE_BLOCK_WIDTH / 2 >= baseBlockX + BASE_BLOCK_WIDTH / 2) {
                         baseBlockX = baseBlockX + widthDifference;
                         movingBlockX = baseBlockX;
                         movingBlockY -= BLOCK_HEIGHT;
                         TowerBuilderScore.increaseScore();
                         repaint();
-                    }else if(movingBlockX + BASE_BLOCK_WIDTH / 2 < baseBlockX + BASE_BLOCK_WIDTH /2){
+                    }else if(!gameOver && movingBlockX + BASE_BLOCK_WIDTH / 2 < baseBlockX + BASE_BLOCK_WIDTH /2){
                         movingBlockX = baseBlockX;
                         movingBlockY -= BLOCK_HEIGHT;
                         TowerBuilderScore.increaseScore();
