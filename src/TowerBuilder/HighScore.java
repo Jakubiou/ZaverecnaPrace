@@ -1,6 +1,6 @@
 package TowerBuilder;
 
-public class HighScore {
+public class HighScore implements Comparable<HighScore>{
 
     private String name;
     private int score;
@@ -16,5 +16,10 @@ public class HighScore {
 
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public int compareTo(HighScore other) {
+        return Integer.compare(other.getScore(),this.score);
     }
 }
