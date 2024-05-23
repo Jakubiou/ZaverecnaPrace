@@ -8,7 +8,7 @@ public class HighScoreManager {
 
     private static List<HighScore> highScores = new ArrayList<>();
 
-    public void addHighScore(String name,int score){
+    public static void addHighScore(String name,int score){
         highScores.add(new HighScore(name,score));
         Collections.sort(highScores);
         if(highScores.size() > 3){
@@ -18,7 +18,7 @@ public class HighScoreManager {
     public static List<HighScore> getHighScores(){
         return  highScores;
     }
-    public boolean isHighScore(int score){
+    public static boolean isHighScore(int score){
         if(highScores.size() < 3){
             return true;
         }
