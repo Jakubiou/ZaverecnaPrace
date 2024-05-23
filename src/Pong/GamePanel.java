@@ -146,8 +146,14 @@ public class GamePanel extends JPanel {
         g.fillRect(0, paddle1Y, PADDLE_WIDTH,PADDLE_HEIGHT);
         g.fillRect(PANEL_WIDTH - PADDLE_WIDTH, paddle2Y, PADDLE_WIDTH,PADDLE_HEIGHT);
         g.fillOval(ballX,ballY,BALL_SIZE,BALL_SIZE);
+
+        g.setColor(Color.WHITE);
+        for (int i = 0; i < PANEL_HEIGHT; i += 30) {
+            g.fillRect(PANEL_WIDTH / 2 - 1, i, 2, 15);
+        }
+
         g.setColor(Color.GREEN);
         g.setFont(new Font("Arial",Font.BOLD,12));
-        g.drawString("Ball Speed: " + Math.abs(ballXSpeed),PANEL_WIDTH / 2 - 30,PANEL_HEIGHT - 10);
+        g.drawString("Ball Speed: " + Math.abs(ballXSpeed),PANEL_WIDTH / 2 - 30,PANEL_HEIGHT - 12);
     }
 }
