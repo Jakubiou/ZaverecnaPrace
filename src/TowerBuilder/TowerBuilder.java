@@ -182,6 +182,9 @@ public class TowerBuilder extends JPanel implements ActionListener {
 
     private void drawHighScores(Graphics g){
         List<HighScore> highScores = HighScoreManager.getHighScores();
+        g.setColor(Color.BLUE);
+        g.fillRoundRect(PANEL_WIDTH / 2 - 200,PANEL_HEIGHT / 2 - 50,400,200,50,50);
+        g.setColor(Color.WHITE);
         g.setFont(new Font("Arial",Font.PLAIN,20));
         int y = PANEL_HEIGHT / 2 + 40;
         for (HighScore highScore : highScores){
@@ -199,7 +202,6 @@ public class TowerBuilder extends JPanel implements ActionListener {
         g.fillOval(PANEL_WIDTH / 2 - 100,PANEL_HEIGHT / 2 + 88,25,25);
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial",Font.PLAIN,18));
-        g.drawRect(PANEL_WIDTH / 2 - 200,PANEL_HEIGHT / 2 - 50,400,200);
         g.drawString(" 1",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 41);
         g.drawString(" 2",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 74);
         g.drawString(" 3",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 107);
