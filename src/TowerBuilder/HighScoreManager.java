@@ -13,4 +13,13 @@ public class HighScoreManager {
             highScores.remove(3);
         }
     }
+    public List<HighScore> getHighScores(){
+        return  highScores;
+    }
+    public boolean isHighScore(int score){
+        if(highScores.size() < 3){
+            return true;
+        }
+        return  score > highScores.get(2).getScore();
+    }
 }
