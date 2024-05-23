@@ -241,6 +241,18 @@ public class TowerBuilder extends JPanel implements ActionListener {
                 gameOver = true;
                 playAgainButton.setVisible(true);
                 timer.stop();
+                if(HighScoreManager.isHighScore(TowerBuilderScore.getScore())){
+                    String name;
+                    do{
+                        name = JOptionPane.showInputDialog(frame,"New High Score! Enter your name (max 10 characters):");
+                        if(name != null && name.length() > 10){
+                            JOptionPane.showMessageDialog(frame,"Name must be 10 characters or less. Please try again");
+                        }
+                    }while (name != null && name.length() > 10);
+                    if(name != null && !name.isEmpty()){
+                        HighScoreManager.addHighScore(name,TowerBuilderScore.getScore());
+                    }
+                }
                 repaint();
             }
         }
