@@ -145,7 +145,7 @@ public class GamePanel extends JPanel {
         g.setColor(Color.WHITE);
         g.fillRect(0, paddle1Y, PADDLE_WIDTH,PADDLE_HEIGHT);
         g.fillRect(PANEL_WIDTH - PADDLE_WIDTH, paddle2Y, PADDLE_WIDTH,PADDLE_HEIGHT);
-        g.fillRect(ballX,ballY,BALL_SIZE,BALL_SIZE);
+        g.fillOval(ballX,ballY,BALL_SIZE,BALL_SIZE);
         g.setColor(Color.GREEN);
         g.setFont(new Font("Arial",Font.BOLD,12));
         g.drawString("Ball Speed: " + Math.abs(ballXSpeed),PANEL_WIDTH / 2 - 30,PANEL_HEIGHT - 10);
