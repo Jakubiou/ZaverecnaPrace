@@ -30,7 +30,7 @@ public class StartPong {
         menuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameMenu gameMenu = new GameMenu();
+                new GameMenu();
                 frame.dispose();
             }
         });

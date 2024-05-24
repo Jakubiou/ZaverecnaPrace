@@ -29,7 +29,7 @@ public class TicTacToeFrame extends JFrame {
         menuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameMenu gameMenu = new GameMenu();
+                new GameMenu();
                 dispose();
             }
         });
