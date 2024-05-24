@@ -8,6 +8,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+/**
+ * The GamePanel class represents a game panel for the game Pong.
+ * Extends the JPanel class to handle the rendering of game elements, input handling and game state updates.
+ */
 public class GamePanel extends JPanel {
     private int PANEL_WIDTH = 900;
     private int PANEL_HEIGHT = 700;
@@ -29,6 +33,12 @@ public class GamePanel extends JPanel {
     private boolean up2Pressed = false;
     private boolean down2Pressed = false;
     private ScorePanel scorePanel;
+
+    /**
+     * Constructor for the GamePanel class.
+     * It sets the game panel, its dimensions, background color and handles input from the keyboard.
+     * @param scorePanel The score display panel.
+     */
 
     public GamePanel(ScorePanel scorePanel){
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
@@ -77,6 +87,10 @@ public class GamePanel extends JPanel {
         });
     }
 
+    /**
+     * Moves paddles based on keystrokes.
+     */
+
     public void movePaddles(){
         if(up1Pressed && paddle1Y > 0){
             paddle1Y -= PADDLE_SPEED;
@@ -91,6 +105,11 @@ public class GamePanel extends JPanel {
             paddle2Y += PADDLE_SPEED;
         }
     }
+
+    /**
+     * Updates ball position and game status.
+     * Moves paddles, checks ball collisions with paddles and walls and updates score.
+     */
 
     public void update(){
         movePaddles();
@@ -119,6 +138,10 @@ public class GamePanel extends JPanel {
 
     }
 
+    /**
+     * Resets the position and direction of the ball after scoring.
+     */
+
     public void ballReset(){
         ballX = PANEL_WIDTH / 2 - BALL_SIZE / 2;
         ballY = PANEL_HEIGHT / 2 - BALL_SIZE / 2;
@@ -140,6 +163,11 @@ public class GamePanel extends JPanel {
 
 
     }
+
+    /**
+     * Renders game elements (paddles, ball, center line and ball speed).
+     * @param g the <code>Graphics</code> object to protect
+     */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.setColor(Color.WHITE);
