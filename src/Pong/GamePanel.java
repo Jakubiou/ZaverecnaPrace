@@ -12,7 +12,7 @@ public class GamePanel extends JPanel {
     private int PANEL_WIDTH = 900;
     private int PANEL_HEIGHT = 700;
     private int PADDLE_WIDTH = 15;
-    private int PADDLE_HEIGHT = 150;
+    private int PADDLE_HEIGHT = 100;
     private int PADDLE_SPEED = 7;
     private int BALL_SIZE = 20;
     private int BALL_SPEED = 3;
