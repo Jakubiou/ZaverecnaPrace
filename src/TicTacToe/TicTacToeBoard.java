@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * The TicTacToeBoard class represents the playing board for the Tic-Tac-Toe game.
+ */
 public class TicTacToeBoard extends JPanel {
     private JButton[][] buttons;
     private char currentPlayer;
@@ -14,6 +17,10 @@ public class TicTacToeBoard extends JPanel {
     private GameEndListener gameEndListener;
     private TicTacToeFrame ticTacToeFrame;
 
+    /**
+     * Creates a new Tic-Tac-Toe game surface.
+     * @param gameEndListener Listener to end the game.
+     */
     public TicTacToeBoard(GameEndListener gameEndListener){
         this.gameEndListener = gameEndListener;
         setLayout(new GridLayout(3,3,20,20));
@@ -24,6 +31,10 @@ public class TicTacToeBoard extends JPanel {
         gameEnded = false;
         initializeBoard();
     }
+
+    /**
+     * Sets the game surface with buttons.
+     */
     public void initializeBoard(){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
@@ -76,6 +87,10 @@ public class TicTacToeBoard extends JPanel {
             }
         }
     }
+
+    /**
+     * Checks if a player has not won or if there is a tie.
+     */
     public void checkWinner() {
         for (int i = 0; i < 3; i++) {
             if (buttons[i][0].getText().equals(buttons[i][1].getText()) && buttons[i][0].getText().equals(buttons[i][2].getText()) && !buttons[i][0].getText().isEmpty()) {
@@ -127,6 +142,11 @@ public class TicTacToeBoard extends JPanel {
         }
     }
 
+    /**
+     * Highlights the specified cells with the given color.
+     * @param color Highlight color.
+     * @param indexes Cell indices to highlight.
+     */
     public void highlightCells(Color color,int... indexes){
         for(int i = 0; i < indexes.length;i += 2){
             int row = indexes[i];
@@ -135,11 +155,18 @@ public class TicTacToeBoard extends JPanel {
         }
     }
 
+    /**
+     * Switches players.
+     */
     public void switchPlayer(){
         currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
         ticTacToeFrame.setCurrentPlayer(currentPlayer);
     }
 
+    /**
+     * Set reference to Tic Tac Toe Frame.
+     * @param ticTacToeFrame An instance of TicTacToeFrame.
+     */
     public void setTicTacToeFrame(TicTacToeFrame ticTacToeFrame){
         this.ticTacToeFrame = ticTacToeFrame;
     }

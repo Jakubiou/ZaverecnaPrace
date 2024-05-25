@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The TicTacToeFrame class represents the main window for the Tic-Tac-Toe game
+ */
 public class TicTacToeFrame extends JFrame {
     private TicTacToeBoard board;
     private JLabel statusLabel;
@@ -13,7 +16,9 @@ public class TicTacToeFrame extends JFrame {
     TicTacToeGUI ticTacToeGUI = new TicTacToeGUI();
     Buttons buttons = new Buttons();
 
-
+    /**
+     * Creates a new Tic-Tac-Toe game window with a game surface and controls.
+     */
     public TicTacToeFrame(){
         board = new TicTacToeBoard(this::handleGameEnd);
         statusLabel = new JLabel("Player X's turn", JLabel.CENTER);
@@ -53,7 +58,10 @@ public class TicTacToeFrame extends JFrame {
         board.setTicTacToeFrame(this);
     }
 
-
+    /**
+     * Handles game termination and sets up a winner report.
+     * @param winner Winner sign ('X', 'O' or ' ' for a tie).
+     */
     public void handleGameEnd(char winner){
         if(winner == ' '){
             winnerLabel.setText("No winner");
@@ -62,9 +70,18 @@ public class TicTacToeFrame extends JFrame {
         }
         showPlayAgainButton();
     }
+
+    /**
+     * Sets the current player and updates the label status.
+     * @param currentPlayer Current player character ('X' or 'O').
+     */
     public void setCurrentPlayer(char currentPlayer){
         statusLabel.setText("Player " + currentPlayer + "'s turn");
     }
+
+    /**
+     * Shows a play again button.
+     */
     public void showPlayAgainButton(){
         playAgainButton.setVisible(true);
     }

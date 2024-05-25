@@ -10,10 +10,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The GameMenu class represents the game's main menu which allows players to select and launch various games
+ */
+
 public class GameMenu extends JFrame {
 
     Buttons buttons = new Buttons();
 
+    /**
+     * Creates a new main game menu.
+     */
     public GameMenu() {
         setTitle("Game Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
