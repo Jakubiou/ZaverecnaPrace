@@ -10,11 +10,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * The StartPong class is used to start the Pong game.
+ */
 public class StartPong {
     Buttons buttons = new Buttons();
+
+    /**
+     * Constructor of the StartPong class.
+     */
     public StartPong() {
     }
 
+    /**
+     * The startPong method starts the main Pong window.
+     * Creates a frame, adds a game and score panel, as well as a menu button.
+     */
     public void startPong(){
         JFrame frame = new JFrame("Pong");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

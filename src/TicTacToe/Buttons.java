@@ -3,11 +3,24 @@ package TicTacToe;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The Buttons class provides a method to create custom styled buttons.
+ */
 public class Buttons {
 
+    /**
+     * Constructor of the Buttons class.
+     */
     public Buttons() {
     }
 
+    /**
+     * Creates a button with the given text and dimensions that changes color on mouseover.
+     * @param text The text that will be displayed on the button.
+     * @param width Button width.
+     * @param height Button height.
+     * @return Button created.
+     */
     public JButton createButton(String text, int width, int height) {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
