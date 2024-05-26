@@ -12,6 +12,9 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The TowerBuilder class represents the Tower Builder game.
+ */
 public class TowerBuilder extends JPanel implements ActionListener {
 
     private int PANEL_WIDTH = 600;
@@ -46,6 +49,10 @@ public class TowerBuilder extends JPanel implements ActionListener {
     private GradientBackground gradientBackground;
     private JButton playAgainButton;
 
+    /**
+     * Creates a new Tower Builder game.
+     * @param frame Frame for the game.
+     */
     public TowerBuilder(JFrame frame){
         setPreferredSize(new Dimension(PANEL_WIDTH,PANEL_HEIGHT));
         gradientBackground = new GradientBackground(Color.BLUE,Color.CYAN);
@@ -151,6 +158,10 @@ public class TowerBuilder extends JPanel implements ActionListener {
         requestFocusInWindow();
     }
 
+    /**
+     * Paint the graphics for the game panel.
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -180,6 +191,10 @@ public class TowerBuilder extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * The method that drew a table with the best scores.
+     * @param g Graphic context.
+     */
     private void drawHighScores(Graphics g){
         List<HighScore> highScores = HighScoreManager.getHighScores();
         g.setColor(Color.BLUE);
@@ -206,6 +221,11 @@ public class TowerBuilder extends JPanel implements ActionListener {
         g.drawString(" 2",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 74);
         g.drawString(" 3",PANEL_WIDTH / 2 - 98,PANEL_HEIGHT / 2 + 107);
     }
+
+    /**
+     * This method is called every time the timer ticks and is responsible for updating the game state.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e){
         if(!isSpacePressed && !gameOver){
@@ -233,6 +253,10 @@ public class TowerBuilder extends JPanel implements ActionListener {
         }
         repaint();
     }
+
+    /**
+     * Updates the game difficulty based on the current score and timer.
+     */
     private void updateDifficulty() {
         if (TowerBuilderScore.getScore() >= SCORE_TO_SPEED_UP) {
             timer.setDelay(5);
@@ -252,6 +276,10 @@ public class TowerBuilder extends JPanel implements ActionListener {
             }
         }
     }
+
+    /**
+     * Checks if the game is over.
+     */
     public void checkGameOver(){
         if(isSpacePressed && !gameOver){
             if(movingBlockX + BASE_BLOCK_WIDTH < baseBlockX || movingBlockX > baseBlockX + BASE_BLOCK_WIDTH){
