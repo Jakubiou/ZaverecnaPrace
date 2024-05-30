@@ -302,4 +302,20 @@ public class TowerBuilder extends JPanel implements ActionListener {
             }
         }
     }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setIsSpacePressed(boolean isSpacePressed) {
+        this.isSpacePressed = isSpacePressed;
+    }
+
+    public void setMovingBlockX(int movingBlockX) {
+        this.movingBlockX = movingBlockX;
+    }
+
+    public int getBASE_BLOCK_WIDTH() {
+        return BASE_BLOCK_WIDTH;
+    }
 }
