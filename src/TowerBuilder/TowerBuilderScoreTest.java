@@ -8,6 +8,8 @@ class TowerBuilderScoreTest {
 
     @Test
     void increaseScore() {
-
+        assertEquals(0,TowerBuilderScore.getScore());
+        TowerBuilderScore.increaseScore();
+        assertEquals(1,TowerBuilderScore.getScore());
     }
 }
