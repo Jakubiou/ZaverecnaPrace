@@ -11,7 +11,7 @@ class HighScoreManagerTest {
 
     @BeforeEach
     void setUp() {
-        HighScoreManager.getHighScores();
+        HighScoreManager.getHighScores().clear();
     }
 
     @Test
@@ -24,12 +24,18 @@ class HighScoreManagerTest {
         assertEquals("Player1",highScores.get(0).getName());
         assertEquals(50,highScores.get(0).getScore());
     }
-
-    @Test
-    void getHighScores() {
-    }
-
     @Test
     void isHighScore() {
+        int score1 = 50;
+        int score2 = 40;
+        int score3 = 30;
+        int score4 = 10;
+        assertTrue(HighScoreManager.isHighScore(score1));
+        HighScoreManager.addHighScore("Player1", score1);
+        assertTrue(HighScoreManager.isHighScore(score2));
+        HighScoreManager.addHighScore("Player2", score2);
+        assertTrue(HighScoreManager.isHighScore(score3));
+        HighScoreManager.addHighScore("Player3", score3);
+        assertFalse(HighScoreManager.isHighScore(score4));
     }
 }
