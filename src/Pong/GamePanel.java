@@ -147,21 +147,26 @@ public class GamePanel extends JPanel {
         ballY = PANEL_HEIGHT / 2 - BALL_SIZE / 2;
         Random random = new Random();
         int i = random.nextInt(5);
-        if(i == 1){
-            ballXSpeed = BALL_SPEED;
-            ballYSpeed = BALL_SPEED;
-        } else if (i == 2) {
-            ballXSpeed = -BALL_SPEED;
-            ballYSpeed = BALL_SPEED;
-        } else if (i == 3) {
-            ballXSpeed = BALL_SPEED;
-            ballYSpeed = -BALL_SPEED;
-        } else if(i == 4){
-            ballXSpeed = -BALL_SPEED;
-            ballYSpeed = -BALL_SPEED;
+        switch (i) {
+            case 1:
+                ballXSpeed = BALL_SPEED;
+                ballYSpeed = BALL_SPEED;
+                break;
+            case 2:
+                ballXSpeed = -BALL_SPEED;
+                ballYSpeed = BALL_SPEED;
+                break;
+            case 3:
+                ballXSpeed = BALL_SPEED;
+                ballYSpeed = -BALL_SPEED;
+                break;
+            case 4:
+                ballXSpeed = -BALL_SPEED;
+                ballYSpeed = -BALL_SPEED;
+                break;
+            default:
+                break;
         }
-
-
     }
 
     /**
