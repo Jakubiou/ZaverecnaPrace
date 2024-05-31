@@ -30,6 +30,7 @@ class TowerBuilderTest {
         towerBuilder.setMovingBlockX(towerBuilder.getBASE_BLOCK_WIDTH() + 201);
         frame.dispose();
         towerBuilder.checkGameOver();
+        frame.dispose();
         assertTrue(towerBuilder.isGameOver());
     }
 }
