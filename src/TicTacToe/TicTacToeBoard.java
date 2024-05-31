@@ -11,9 +11,9 @@ import java.awt.event.MouseEvent;
  * The TicTacToeBoard class represents the playing board for the Tic-Tac-Toe game.
  */
 public class TicTacToeBoard extends JPanel {
-    private JButton[][] buttons;
-    private char currentPlayer;
-    private boolean gameEnded;
+    protected JButton[][] buttons;
+    protected char currentPlayer;
+    protected boolean gameEnded;
     private GameEndListener gameEndListener;
     private TicTacToeFrame ticTacToeFrame;
 
