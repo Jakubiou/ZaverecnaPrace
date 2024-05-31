@@ -58,5 +58,9 @@ class TicTacToeBoardTest {
 
     @org.junit.jupiter.api.Test
     void switchPlayer() {
+        board.switchPlayer();
+        assertEquals('O', board.currentPlayer);
+        board.switchPlayer();
+        assertEquals('X', board.currentPlayer);
     }
 }
